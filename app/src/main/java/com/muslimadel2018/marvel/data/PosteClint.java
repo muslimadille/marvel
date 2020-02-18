@@ -47,8 +47,8 @@ public class PosteClint {
         return INISTANCE;
     }
 
-    public Call<Response> getPosts() {
-        return postInterface.getResponse("1","e85d6da09c704c0c24b6ecf818a9875b",hash);
+    public Call<Response> getPosts(String searchkey) {
+        return postInterface.getResponse(searchkey,"1","e85d6da09c704c0c24b6ecf818a9875b",hash);
     }
 
 

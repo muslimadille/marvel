@@ -19,7 +19,7 @@ public class CharacterViewModel extends ViewModel {
 
     public void getCharacter() {
 
-        PosteClint.getINISTANCE().getPosts().enqueue(new Callback<Response>() {
+        PosteClint.getINISTANCE().getPosts(null).enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 characterMutableLiveData.setValue(response.body().getData().getResults());
