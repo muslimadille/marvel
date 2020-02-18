@@ -1,4 +1,4 @@
-package com.muslimadel2018.marvel.viewModel;
+package com.muslimadel2018.marvel.ui;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
