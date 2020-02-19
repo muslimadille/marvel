@@ -6,10 +6,10 @@ import com.google.gson.annotations.SerializedName;
 public class Thumbnail {
     @SerializedName("path")
     @Expose
-    String path;
+    private String path;
     @SerializedName("extension")
     @Expose
-    String extension;
+    private String extension;
 
     public String getPath() {
         return path;

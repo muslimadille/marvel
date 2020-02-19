@@ -3,29 +3,79 @@ package com.muslimadel2018.marvel.pojo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
 public class Characters {
     @SerializedName("id")
     @Expose
-    String id;
+    private String id;
 
     @SerializedName("name")
     @Expose
-    String name;
+    private String name;
 
     @SerializedName("description")
     @Expose
     String description;
 
-    public Thumbnail getThumbnail() {
-        return thumbnail;
-    }
-
     @SerializedName("thumbnail")
     @Expose
-    Thumbnail thumbnail;
+    private Thumbnail thumbnail;
+
+    @SerializedName("comics")
+    @Expose
+    private Lists comics;
+
+    @SerializedName("series")
+    @Expose
+    private Lists series;
+
+    @SerializedName("stories")
+    @Expose
+    private Lists stories;
+
+    @SerializedName("events")
+    @Expose
+    private Lists events;
+
+    public Lists getSeries() {
+        return series;
+    }
+
+    public void setSeries(Lists series) {
+        this.series = series;
+    }
+
+    public Lists getStories() {
+        return stories;
+    }
+
+    public void setStories(Lists stories) {
+        this.stories = stories;
+    }
+
+    public Lists getEvents() {
+        return events;
+    }
+
+    public void setEvents(Lists events) {
+        this.events = events;
+    }
+
+
+    public Lists getComics() {
+        return comics;
+    }
+
+    public void setComics(Lists comics) {
+        this.comics = comics;
+    }
 
     public void setThumbnail(Thumbnail thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public Thumbnail getThumbnail() {
+        return thumbnail;
     }
 
     public String getId() {

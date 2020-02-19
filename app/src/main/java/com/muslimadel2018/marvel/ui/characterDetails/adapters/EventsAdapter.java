@@ -1,4 +1,4 @@
-package com.muslimadel2018.marvel.ui.mainActivity;
+package com.muslimadel2018.marvel.ui.characterDetails.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,45 +14,48 @@ import com.muslimadel2018.marvel.R;
 import com.muslimadel2018.marvel.pojo.Characters;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CharactersListAdapter extends RecyclerView.Adapter<CharactersListAdapter.ViewHolder> {
-    private OnItimeClickListner mListner;
+
+
+public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
+    private EventsAdapter.OnItimeClickListner mListner;
 
     public interface OnItimeClickListner {
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListener(OnItimeClickListner listener) {
+    public void setOnItemClickListener(EventsAdapter.OnItimeClickListner listener) {
         mListner = listener;
     }
 
     private List<Characters> characters ;
     private Context context;
+    private int index;
 
-    public CharactersListAdapter(Context context, List<Characters> characters) {
+    public EventsAdapter(Context context, List<Characters> characters, int index) {
         this.context = context;
         this.characters = characters;
+        this.index=index;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_raw, parent, false);
-        return new CharactersListAdapter.ViewHolder(view, mListner);
+    public EventsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_list_raw, parent, false);
+        return new EventsAdapter.ViewHolder(view, mListner);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.name.setText(characters.get(position).getName());
+    public void onBindViewHolder(@NonNull EventsAdapter.ViewHolder holder, int position) {
+        holder.name.setText(characters.get(index).getEvents().getItems().get(position).getName());
         Picasso.get().load(characters.get(position).getThumbnail().getPath()+".jpg").into(holder.itemImage);
 
     }
 
     @Override
     public int getItemCount() {
-        return characters.size();
+        return characters.get(index).getEvents().getItems().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -60,10 +63,10 @@ public class CharactersListAdapter extends RecyclerView.Adapter<CharactersListAd
         private TextView name;
 
 
-        public ViewHolder(@NonNull View itemView, final OnItimeClickListner listner) {
+        public ViewHolder(@NonNull View itemView, final EventsAdapter.OnItimeClickListner listner) {
             super(itemView);
-            itemImage = itemView.findViewById(R.id.item_list_image);
-            name = itemView.findViewById(R.id.list_item_name);
+            itemImage = itemView.findViewById(R.id.item_image);
+            name = itemView.findViewById(R.id.item_text);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,3 +89,4 @@ public class CharactersListAdapter extends RecyclerView.Adapter<CharactersListAd
     }
 
 }
+

@@ -6,14 +6,14 @@ import com.google.gson.annotations.SerializedName;
 public class Response {
     @SerializedName("code")
     @Expose
-    int code;
+    private int code;
     @SerializedName("etag")
     @Expose
-    String etag;
+    private String etag;
     @SerializedName("data")
     @Expose
-    Data data;
-    @SerializedName("")
+    private Data data;
+
 
 
     public int getCode() {

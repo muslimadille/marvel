@@ -1,4 +1,4 @@
-package com.muslimadel2018.marvel.ui.searchActivity;
+package com.muslimadel2018.marvel.ui.characterDetails.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,42 +16,44 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.ViewHolder> {
-    private SearchListAdapter.OnItimeClickListner mListner;
+public class ComicsAdapter extends RecyclerView.Adapter<ComicsAdapter.ViewHolder> {
+    private ComicsAdapter.OnItimeClickListner mListner;
 
     public interface OnItimeClickListner {
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListener(SearchListAdapter.OnItimeClickListner listener) {
+    public void setOnItemClickListener(ComicsAdapter.OnItimeClickListner listener) {
         mListner = listener;
     }
 
-    private List<Characters> characters ;
+    private List<Characters> characters;
     private Context context;
+    private int index;
 
-    public SearchListAdapter(Context context, List<Characters> characters) {
+    public ComicsAdapter(Context context, List<Characters> characters, int index) {
         this.context = context;
         this.characters = characters;
+        this.index = index;
     }
 
     @NonNull
     @Override
-    public SearchListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_list_raw, parent, false);
-        return new SearchListAdapter.ViewHolder(view, mListner);
+    public ComicsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_list_raw, parent, false);
+        return new ComicsAdapter.ViewHolder(view, mListner);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SearchListAdapter.ViewHolder holder, int position) {
-        holder.name.setText(characters.get(position).getName());
-        Picasso.get().load(characters.get(position).getThumbnail().getPath()+".jpg").into(holder.itemImage);
+    public void onBindViewHolder(@NonNull ComicsAdapter.ViewHolder holder, int position) {
+        holder.name.setText(characters.get(index).getComics().getItems().get(position).getName());
+        Picasso.get().load(characters.get(position).getThumbnail().getPath() + ".jpg").into(holder.itemImage);
 
     }
 
     @Override
     public int getItemCount() {
-        return characters.size();
+        return characters.get(index).getComics().getItems().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -59,10 +61,10 @@ public class SearchListAdapter extends RecyclerView.Adapter<SearchListAdapter.Vi
         private TextView name;
 
 
-        public ViewHolder(@NonNull View itemView, final SearchListAdapter.OnItimeClickListner listner) {
+        public ViewHolder(@NonNull View itemView, final ComicsAdapter.OnItimeClickListner listner) {
             super(itemView);
-            itemImage = itemView.findViewById(R.id.search_list_image);
-            name = itemView.findViewById(R.id.search_list_text);
+            itemImage = itemView.findViewById(R.id.item_image);
+            name = itemView.findViewById(R.id.item_text);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

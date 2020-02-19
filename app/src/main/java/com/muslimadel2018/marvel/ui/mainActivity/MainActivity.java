@@ -1,5 +1,6 @@
 package com.muslimadel2018.marvel.ui.mainActivity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -7,12 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.muslimadel2018.marvel.R;
 import com.muslimadel2018.marvel.pojo.Characters;
-import com.muslimadel2018.marvel.ui.CharacterViewModel;
+import com.muslimadel2018.marvel.ui.mainActivity.adapters.CharactersListAdapter;
+import com.muslimadel2018.marvel.viewModel.CharacterViewModel;
 import com.muslimadel2018.marvel.ui.characterDetails.DetailsActivity;
 import com.muslimadel2018.marvel.ui.searchActivity.SearchActivity;
 
@@ -28,14 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button=findViewById(R.id.btn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent inte=new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(inte);
-            }
-        });
+
 
         charactersRecyclerView = findViewById(R.id.characters_list);
         characterViewModel = ViewModelProviders.of(this).get(CharacterViewModel.class);
@@ -62,7 +58,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.main_search_botton,menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId()==R.id.msearch){
+            startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

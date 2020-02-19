@@ -8,19 +8,19 @@ import java.util.ArrayList;
 public class Data {
     @SerializedName("offset")
     @Expose
-    int offset;
+    private int offset;
     @SerializedName("limit")
     @Expose
-    int limit;
+    private int limit;
     @SerializedName("total")
     @Expose
-    int total;
+    private int total;
     @SerializedName("count")
     @Expose
-    int count;
+    private int count;
     @SerializedName("results")
     @Expose
-    ArrayList<Characters> results;
+    private ArrayList<Characters> results;
 
     public int getOffset() {
         return offset;

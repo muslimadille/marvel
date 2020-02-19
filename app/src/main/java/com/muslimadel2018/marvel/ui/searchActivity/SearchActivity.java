@@ -19,7 +19,7 @@ import com.muslimadel2018.marvel.data.PosteClint;
 import com.muslimadel2018.marvel.pojo.Characters;
 import com.muslimadel2018.marvel.pojo.Response;
 import com.muslimadel2018.marvel.ui.characterDetails.DetailsActivity;
-import com.muslimadel2018.marvel.ui.mainActivity.MainActivity;
+import com.muslimadel2018.marvel.ui.searchActivity.adapters.SearchListAdapter;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         progressBar=findViewById(R.id.progress);
         searchList=findViewById(R.id.search_list);
-        fetshData("asdsakdsad");
+        fetshData("nothing");
 
     }
 
