@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.muslimadel2018.marvel.R;
 import com.muslimadel2018.marvel.pojo.Characters;
+import com.muslimadel2018.marvel.ui.listsDetailsActivity.ListsDetailsActivity;
+import com.muslimadel2018.marvel.ui.mainActivity.MainActivity;
 import com.muslimadel2018.marvel.viewModel.CharacterViewModel;
 import com.muslimadel2018.marvel.ui.characterDetails.adapters.ComicsAdapter;
 import com.muslimadel2018.marvel.ui.characterDetails.adapters.EventsAdapter;
@@ -60,15 +62,61 @@ public class DetailsActivity extends AppCompatActivity {
 
                 comicsAdapter = new ComicsAdapter(DetailsActivity.this, characters,itemPosition());
                 comicsList.setAdapter(comicsAdapter);
+                comicsAdapter.setOnItemClickListener(new ComicsAdapter.OnItimeClickListner() {
+                    @Override
+                    public void onItemClick(int position) {
+                        Intent intent=new Intent(DetailsActivity.this, ListsDetailsActivity.class);
+                        intent.putExtra("POSITION",position);
+                        intent.putExtra("INDEX",itemPosition());
+                        intent.putExtra("TYPE",1);
+
+                        startActivity(intent);
+                    }
+                });
 
                 seriesAdapter=new SeriesAdapter(DetailsActivity.this,characters,itemPosition());
                 seriesList.setAdapter(seriesAdapter);
+                seriesAdapter.setOnItemClickListener(new SeriesAdapter.OnItimeClickListner() {
+                    @Override
+                    public void onItemClick(int position) {
+                        Intent intent=new Intent(DetailsActivity.this, ListsDetailsActivity.class);
+                        intent.putExtra("POSITION",position);
+                        intent.putExtra("INDEX",itemPosition());
+                        intent.putExtra("TYPE",2);
+
+                        startActivity(intent);
+
+                    }
+                });
 
                 eventsAdapter=new EventsAdapter(DetailsActivity.this,characters,itemPosition());
                 eventsList.setAdapter(eventsAdapter);
+                eventsAdapter.setOnItemClickListener(new EventsAdapter.OnItimeClickListner() {
+                    @Override
+                    public void onItemClick(int position) {
+                        Intent intent=new Intent(DetailsActivity.this, ListsDetailsActivity.class);
+                        intent.putExtra("POSITION",position);
+                        intent.putExtra("INDEX",itemPosition());
+                        intent.putExtra("TYPE",4);
+
+                        startActivity(intent);
+                    }
+                });
 
                 storiesAdapter=new StoriesAdapter(DetailsActivity.this,characters,itemPosition());
                 storiesList.setAdapter(storiesAdapter);
+                storiesAdapter.setOnItemClickListener(new StoriesAdapter.OnItimeClickListner() {
+                    @Override
+                    public void onItemClick(int position) {
+                        Intent intent=new Intent(DetailsActivity.this, ListsDetailsActivity.class);
+                        intent.putExtra("POSITION",position);
+                        intent.putExtra("INDEX",itemPosition());
+                        intent.putExtra("TYPE",3);
+
+                        startActivity(intent);
+                    }
+                });
+
 
 
             }
