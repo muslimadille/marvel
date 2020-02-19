@@ -31,8 +31,6 @@ public class ListsDetailsActivity extends AppCompatActivity {
 
         intent= getIntent();
         bundle= intent.getExtras();
-        String B= String.valueOf(getIndex(bundle));
-        Toast.makeText(ListsDetailsActivity.this,B,Toast.LENGTH_LONG).show();
 
         listisItemImage=findViewById(R.id.lists_details_image);
         listisItemtext=findViewById(R.id.lists_details_text);
@@ -65,6 +63,8 @@ public class ListsDetailsActivity extends AppCompatActivity {
             }
         });
     }
+    /*
+    *functions to bring extras values*/
     //............................................................
     public int getIndex(Bundle bundle){
         int index=0;
