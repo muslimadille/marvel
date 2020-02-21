@@ -33,13 +33,14 @@ public class SplashActivity extends AppCompatActivity {
                     sleep(3000);
                     boolean x = true;
                     while (x) {
-                        if (haveNetwork() & isInternetAvailable()) {
+                        if ( isInternetAvailable()) {
                             Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                             startActivity(intent);
                             x = false;
                             finish();
                         }
                     }
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -48,6 +49,7 @@ public class SplashActivity extends AppCompatActivity {
 
         thread.start();
     }
+
 
     public boolean isInternetAvailable() {
         try {
